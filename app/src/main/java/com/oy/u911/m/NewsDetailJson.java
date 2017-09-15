@@ -24,7 +24,7 @@ public class NewsDetailJson {
     @SerializedName("title")
     private String mTitle;
 
-    /** 获得的图片 同{@link DailyAllNewsJson.Story}获取的图片分辨率不同, 这里浏览文章时的大图 */
+    /** 获得的图片 同{@link DailyNewsJson.Story#getStoryImgUrls()}获取的图片分辨率不同, 这里浏览文章时的大图 */
     @SerializedName("image")
     private String mImage;
 

@@ -10,7 +10,7 @@ import java.util.List;
  * Describe : 某日的所有新闻概览Json
  */
 
-public class DailyAllNewsJson {
+public class DailyNewsJson {
 
     /** 日期 */
     @SerializedName("date")
@@ -38,7 +38,7 @@ public class DailyAllNewsJson {
 
     @Override
     public String toString() {
-        return "DailyAllNewsJson{" +
+        return "DailyNewsJson{" +
                 "mDate='" + mDate + '\'' +
                 ", mDailyStories=" + mDailyStories +
                 ", mDailyTopStories=" + mDailyTopStories +
