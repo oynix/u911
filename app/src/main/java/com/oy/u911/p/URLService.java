@@ -31,7 +31,7 @@ public interface URLService {
     Observable<StartImageJson> getStartImage();
 
     /** 获取最新消息 */
-    @GET("news/lates")
+    @GET("news/latest")
     Observable<DailyNewsJson> getLatestNews();
 
     /**

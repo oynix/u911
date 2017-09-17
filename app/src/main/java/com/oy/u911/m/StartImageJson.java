@@ -2,13 +2,15 @@ package com.oy.u911.m;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/15 14:43
  * Describe : 启动图片json类
  */
 
-public class StartImageJson {
+public class StartImageJson implements Serializable {
 
     /** 图片版权所有 */
     @SerializedName("text")

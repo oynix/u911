@@ -50,7 +50,7 @@ public class DailyNewsJson {
     /**
      * 每条新闻概览信息Json
      */
-    private static class Story {
+    public static class Story {
 
         /** 新闻标题 */
         @SerializedName("title")
