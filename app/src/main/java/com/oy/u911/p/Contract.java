@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface Contract {
     interface View {
+        void setTopStoryData(List<DailyNewsJson.Story> topStoryData);
         void setListData(List<DailyNewsJson.Story> storyList);
     }
 

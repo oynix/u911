@@ -88,6 +88,7 @@ public class Presenter implements Contract.Presenter {
 
                     @Override
                     public void onNext(DailyNewsJson value) {
+                        mView.setTopStoryData(value.getDailyTopStories());
                         mView.setListData(value.getDailyStories());
                     }
 
