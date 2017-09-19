@@ -45,17 +45,30 @@ public class TopVPAdapter extends PagerAdapter {
         View pageView = View.inflate(container.getContext().getApplicationContext(), R.layout.item_page, null);
 
         ImageView pageImage = pageView.findViewById(R.id.page_image);
-        DailyNewsJson.Story story = mStories.get(position);
+        final DailyNewsJson.Story story = mStories.get(position);
         Glide.with(container.getContext()).load(story.getStoryImgUrl()).into(pageImage);
 
         TextView pageTitle = pageView.findViewById(R.id.page_title);
         pageTitle.setText(story.getStoryTitle());
         container.addView(pageView);
+        pageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.onChildClick(story);
+                }
+            }
+        });
         return pageView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
+    }
+
+    private StoryListAdapter.OnChildClickListener mListener;
+    public void setOnChildClickListener(StoryListAdapter.OnChildClickListener l) {
+        mListener = l;
     }
 }

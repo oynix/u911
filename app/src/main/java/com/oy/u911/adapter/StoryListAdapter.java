@@ -65,8 +65,10 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     @Override
     public void onBindViewHolder(final StoryListAdapter.MyHolder holder, int position) {
         if (holder.holderType == 0) {
-            holder.viewPager.setAdapter(new TopVPAdapter(mTopData));
+            TopVPAdapter adapter = new TopVPAdapter(mTopData);
+            holder.viewPager.setAdapter(adapter);
             holder.indicator.setViewPager(holder.viewPager);
+            adapter.setOnChildClickListener(mOnChildClickListener);
         } else {
             final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
