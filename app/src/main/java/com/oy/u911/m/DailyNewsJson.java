@@ -56,10 +56,6 @@ public class DailyNewsJson {
         @SerializedName("title")
         private String mStoryTitle;
 
-        /** 新闻图片 官方采用数组形式, 可能为空, 使用时注意判断 */
-        @SerializedName("images")
-        private List<String> mStoryImgUrls;
-
         /** 供Google Analytics */
         @SerializedName("ga_prefix")
         private String mStoryGA;
@@ -72,9 +68,21 @@ public class DailyNewsJson {
         @SerializedName("id")
         private String mStoryId;
 
+        /** 主页列表story图片为数组, 新闻图片 官方采用数组形式, 可能为空, 使用时注意判断 */
+        @SerializedName("images")
+        private List<String> mStoryImgUrls;
+
+        /** top story图片为字符串 */
+        @SerializedName("image")
+        private String mStoryImgUrl;
+
         /** 消息是否含有多张图片 */
         @SerializedName("multipic")
         private boolean mStoryMultiPic;
+
+        public String getStoryImgUrl() {
+            return mStoryImgUrl;
+        }
 
         public String getStoryTitle() {
             return mStoryTitle;

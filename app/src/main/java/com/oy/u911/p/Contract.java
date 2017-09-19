@@ -2,8 +2,6 @@ package com.oy.u911.p;
 
 import com.oy.u911.m.DailyNewsJson;
 
-import java.util.List;
-
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/15 10:30
@@ -12,8 +10,7 @@ import java.util.List;
 
 public interface Contract {
     interface View {
-        void setTopStoryData(List<DailyNewsJson.Story> topStoryData);
-        void setListData(List<DailyNewsJson.Story> storyList);
+        void setDailyListData(DailyNewsJson topStoryData);
     }
 
     interface Presenter {
