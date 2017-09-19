@@ -42,7 +42,7 @@ public class TopVPAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View pageView = View.inflate(container.getContext().getApplicationContext(), R.layout.page, null);
+        View pageView = View.inflate(container.getContext().getApplicationContext(), R.layout.item_page, null);
 
         ImageView pageImage = pageView.findViewById(R.id.page_image);
         DailyNewsJson.Story story = mStories.get(position);

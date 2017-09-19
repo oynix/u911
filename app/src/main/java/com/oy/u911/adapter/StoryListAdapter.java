@@ -15,6 +15,8 @@ import com.oy.u911.m.DailyNewsJson;
 
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/18 9:13
@@ -49,11 +51,11 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     @Override
     public StoryListAdapter.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == 0) {
-            ViewPager viewPager = new ViewPager(parent.getContext());
-            viewPager.setBackgroundResource(R.drawable.page_bottom_mask);
+            View itemView = View.inflate(parent.getContext().getApplicationContext(), R.layout.header, null);
+            // ViewPager可能加载不到宽和高
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DrawUtil.dip2px(250));
-            viewPager.setLayoutParams(params);
-            return new MyHolder(viewPager, viewType);
+            itemView.setLayoutParams(params);
+            return new MyHolder(itemView, viewType);
         } else {
             View itemView = View.inflate(parent.getContext().getApplicationContext(), R.layout.item_story, null);
             return new MyHolder(itemView, viewType);
@@ -64,8 +66,9 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     public void onBindViewHolder(final StoryListAdapter.MyHolder holder, int position) {
         if (holder.holderType == 0) {
             holder.viewPager.setAdapter(new TopVPAdapter(mTopData));
+            holder.indicator.setViewPager(holder.viewPager);
         } else {
-            DailyNewsJson.Story story = mListData.get(position);
+            final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
             if (storyImgUrls != null && storyImgUrls.size() > 0) {
                 Glide.with(mContext).load(storyImgUrls.get(0)).into(holder.itemIcon);
@@ -77,7 +80,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
                     if (mOnChildClickListener != null) {
                         int adapterPosition = holder.getAdapterPosition();
                         if (adapterPosition == RecyclerView.NO_POSITION) return;
-                        mOnChildClickListener.onChildClick(view, adapterPosition);
+                        mOnChildClickListener.onChildClick(story);
                     }
                 }
             });
@@ -86,19 +89,23 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
     class MyHolder extends RecyclerView.ViewHolder {
 
+        // header
+        ViewPager viewPager;
+        CircleIndicator indicator;
+
         // item
         ImageView itemIcon;
         TextView itemTitle;
+
         int holderType;
-        // header
-        ViewPager viewPager;
 
         MyHolder(View itemView, int type) {
             super(itemView);
             holderType = type;
             if (type == 0) {
                 // header
-                viewPager = (ViewPager) itemView;
+                viewPager = itemView.findViewById(R.id.header_view_pager);
+                indicator = itemView.findViewById(R.id.header_circle_indicator);
             } else {
                 // item
                 itemIcon = itemView.findViewById(R.id.item_icon);
@@ -108,7 +115,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     }
 
     public interface OnChildClickListener {
-        void onChildClick(View v, int position);
+        void onChildClick(DailyNewsJson.Story story);
     }
 
     private OnChildClickListener mOnChildClickListener;

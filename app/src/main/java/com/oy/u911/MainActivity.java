@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Toast;
 
 import com.oy.u911.adapter.StoryListAdapter;
@@ -42,7 +41,7 @@ public class MainActivity extends BaseActivity implements Contract.View, StoryLi
 
     /** RecyclerView 点击监听 */
     @Override
-    public void onChildClick(View v, int position) {
-        Toast.makeText(getApplicationContext(), "RecyclerView点击:" + position, Toast.LENGTH_SHORT).show();
+    public void onChildClick(DailyNewsJson.Story story) {
+        Toast.makeText(getApplicationContext(), "RecyclerView点击:" + story.getStoryTitle(), Toast.LENGTH_SHORT).show();
     }
 }
