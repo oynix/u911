@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.oy.u911.DrawUtil;
 import com.oy.u911.R;
 import com.oy.u911.m.DailyNewsJson;
+import com.oy.u911.v.DotIndicator;
 
 import java.util.List;
 
@@ -66,6 +67,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
             TopVPAdapter adapter = new TopVPAdapter(mTopData);
             holder.viewPager.setAdapter(adapter);
             adapter.setOnChildClickListener(mOnChildClickListener);
+            holder.indicator.setDotCount(adapter.getRealCount());
         } else {
             final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
@@ -90,6 +92,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
         // header
         ViewPager viewPager;
+        DotIndicator indicator;
 
         // item
         ImageView itemIcon;
@@ -103,6 +106,23 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
             if (type == 0) {
                 // header
                 viewPager = itemView.findViewById(R.id.header_view_pager);
+                indicator = itemView.findViewById(R.id.header_dot_indicator);
+                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        indicator.setCurrentDot(position);
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+
+                    }
+                });
             } else {
                 // item
                 itemIcon = itemView.findViewById(R.id.item_icon);

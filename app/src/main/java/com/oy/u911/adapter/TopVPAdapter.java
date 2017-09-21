@@ -71,4 +71,8 @@ public class TopVPAdapter extends PagerAdapter {
     public void setOnChildClickListener(StoryListAdapter.OnChildClickListener l) {
         mListener = l;
     }
+
+    public int getRealCount() {
+        return mStories.size();
+    }
 }
