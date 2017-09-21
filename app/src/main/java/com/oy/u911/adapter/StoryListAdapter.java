@@ -15,8 +15,6 @@ import com.oy.u911.m.DailyNewsJson;
 
 import java.util.List;
 
-import me.relex.circleindicator.CircleIndicator;
-
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/18 9:13
@@ -67,7 +65,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
         if (holder.holderType == 0) {
             TopVPAdapter adapter = new TopVPAdapter(mTopData);
             holder.viewPager.setAdapter(adapter);
-            holder.indicator.setViewPager(holder.viewPager);
             adapter.setOnChildClickListener(mOnChildClickListener);
         } else {
             final DailyNewsJson.Story story = mListData.get(position);
@@ -93,7 +90,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
         // header
         ViewPager viewPager;
-        CircleIndicator indicator;
 
         // item
         ImageView itemIcon;
@@ -107,7 +103,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
             if (type == 0) {
                 // header
                 viewPager = itemView.findViewById(R.id.header_view_pager);
-                indicator = itemView.findViewById(R.id.header_circle_indicator);
             } else {
                 // item
                 itemIcon = itemView.findViewById(R.id.item_icon);

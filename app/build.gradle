@@ -47,7 +47,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson'
 
     // ViewPager Circle Indicator
-    compile 'me.relex:circleindicator:1.2.2@aar'
+//    compile 'me.relex:circleindicator:1.2.2@aar'
 
 //    compile 'com.squareup.retrofit2:converter-jackson'
 //    compile 'com.squareup.retrofit2:converter-moshi'
