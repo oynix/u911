@@ -11,6 +11,7 @@
         android:contentDescription="@null"
         android:scaleType="centerCrop"/>
 
+    <!-- 图片遮罩 -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"

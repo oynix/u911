@@ -73,7 +73,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
             final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
             if (storyImgUrls != null && storyImgUrls.size() > 0) {
-                Glide.with(mContext).load(storyImgUrls.get(0)).into(holder.itemIcon);
+                Glide.with(mContext).load(storyImgUrls.get(0)).asBitmap().into(holder.itemIcon);
             }
             holder.itemTitle.setText(story.getStoryTitle());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
