@@ -1,7 +1,6 @@
 package com.oy.u911.adapter;
 
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.oy.u911.R;
 import com.oy.u911.m.DailyNewsJson;
+import com.oy.u911.util.Loger;
 
 import java.util.List;
 
@@ -19,20 +19,20 @@ import java.util.List;
  * Describe : 主页面顶部轮播Adapter
  */
 
-public class TopVPAdapter extends PagerAdapter {
+public class TopViewPagerAdapter extends PagerAdapter {
 
     private List<DailyNewsJson.Story> mStories;
 
-    public TopVPAdapter(List<DailyNewsJson.Story> stories) {
+    public TopViewPagerAdapter(List<DailyNewsJson.Story> stories) {
         for (DailyNewsJson.Story story : stories) {
-            Log.e("Adapter", "story:" + story.toString());
+            Loger.e("Adapter", "story:" + story.toString());
         }
         mStories = stories;
     }
 
     @Override
     public int getCount() {
-        return mStories.size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -42,6 +42,11 @@ public class TopVPAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        // 获取真实位置
+        position = position % mStories.size();
+        if (position < 0) {
+            position += mStories.size();
+        }
         View pageView = View.inflate(container.getContext().getApplicationContext(), R.layout.item_page, null);
 
         ImageView pageImage = pageView.findViewById(R.id.page_image);
@@ -70,9 +75,5 @@ public class TopVPAdapter extends PagerAdapter {
     private StoryListAdapter.OnChildClickListener mListener;
     public void setOnChildClickListener(StoryListAdapter.OnChildClickListener l) {
         mListener = l;
-    }
-
-    public int getRealCount() {
-        return mStories.size();
     }
 }

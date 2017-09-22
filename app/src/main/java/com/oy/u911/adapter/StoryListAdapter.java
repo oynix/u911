@@ -1,6 +1,8 @@
 package com.oy.u911.adapter;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.oy.u911.DrawUtil;
 import com.oy.u911.R;
 import com.oy.u911.m.DailyNewsJson;
+import com.oy.u911.util.DrawUtil;
+import com.oy.u911.util.Loger;
 import com.oy.u911.v.DotIndicator;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -23,6 +27,8 @@ import java.util.List;
  */
 
 public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHolder> {
+
+    private final static String TAG = StoryListAdapter.class.getSimpleName();
 
     private List<DailyNewsJson.Story> mListData;
     private List<DailyNewsJson.Story> mTopData;
@@ -64,10 +70,12 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     @Override
     public void onBindViewHolder(final StoryListAdapter.MyHolder holder, int position) {
         if (holder.holderType == 0) {
-            TopVPAdapter adapter = new TopVPAdapter(mTopData);
+            TopViewPagerAdapter adapter = new TopViewPagerAdapter(mTopData);
             holder.viewPager.setAdapter(adapter);
+            // TopViewPagerItem 和 StoryListItem 共用同一个点击事件监听, 供外部调用
             adapter.setOnChildClickListener(mOnChildClickListener);
-            holder.indicator.setDotCount(adapter.getRealCount());
+            holder.indicator.setDotCount(mTopData.size());
+            holder.viewPager.setCurrentItem(Integer.MAX_VALUE / 2 - Integer.MAX_VALUE / 2 % mTopData.size());
         } else {
             final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
@@ -97,22 +105,20 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
         // item
         ImageView itemIcon;
         TextView itemTitle;
+        MyHandler handler;
 
         int holderType;
 
         MyHolder(View itemView, int type) {
             super(itemView);
             holderType = type;
+            // header
             if (type == 0) {
-                // header
                 viewPager = itemView.findViewById(R.id.header_view_pager);
                 indicator = itemView.findViewById(R.id.header_dot_indicator);
-                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
+                handler = new MyHandler(viewPager);
+                // 滑动监听
+                viewPager.addOnPageChangeListener(new OnPageChangeAdapter() {
                     @Override
                     public void onPageSelected(int position) {
                         indicator.setCurrentDot(position);
@@ -120,7 +126,33 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
                     @Override
                     public void onPageScrollStateChanged(int state) {
+                        switch (state) {
+                            case ViewPager.SCROLL_STATE_IDLE:
+                                handler.sendEmptyMessage(MESSAGE_CONTINUE);
+                                break;
+                            case ViewPager.SCROLL_STATE_DRAGGING:
+                                handler.sendEmptyMessage(MESSAGE_PAUSE);
+                                break;
+                            case ViewPager.SCROLL_STATE_SETTLING:
+                                handler.sendEmptyMessage(MESSAGE_PAUSE);
+                                break;
+                        }
+                    }
+                });
+                // 轮播的开始和停止控制
+                viewPager.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                    @Override
+                    public void onViewAttachedToWindow(View view) {
+                        if (handler != null) {
+                            handler.sendEmptyMessage(MESSAGE_CONTINUE);
+                        }
+                    }
 
+                    @Override
+                    public void onViewDetachedFromWindow(View view) {
+                        if (handler != null) {
+                            handler.sendEmptyMessage(MESSAGE_PAUSE);
+                        }
                     }
                 });
             } else {
@@ -141,4 +173,42 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
         mOnChildClickListener = listener;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////
+    // 轮播控制部分
+
+    private static final int MESSAGE_PAUSE = 0x01;
+    private static final int MESSAGE_CONTINUE = 0x02;
+    private static final int MESSAGE_NEXT = 0x03;
+
+    private static final long MESSAGE_DELAYED = 4500;
+
+    private static class MyHandler extends Handler {
+
+        private WeakReference<ViewPager> mReference;
+
+        MyHandler(ViewPager viewPager) {
+            mReference = new WeakReference<>(viewPager);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            Loger.d(TAG, "接收消息: " + msg.what);
+            switch (msg.what) {
+                case MESSAGE_PAUSE:
+                    removeCallbacksAndMessages(null);
+                    break;
+                case MESSAGE_NEXT:
+                    if (mReference.get() != null) {
+                        int currentItem = mReference.get().getCurrentItem();
+                        mReference.get().setCurrentItem(currentItem + 1);
+                    }
+                    sendEmptyMessageDelayed(MESSAGE_NEXT, MESSAGE_DELAYED);
+                    break;
+                case MESSAGE_CONTINUE:
+                    sendEmptyMessageDelayed(MESSAGE_NEXT, MESSAGE_DELAYED);
+                    break;
+            }
+        }
+    }
 }

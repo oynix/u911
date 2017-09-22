@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 
-import com.oy.u911.DrawUtil;
+import com.oy.u911.util.DrawUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,6 @@ public class DotIndicator extends LinearLayout {
 
     private void init() {
         setOrientation(HORIZONTAL);
-        setGravity(Gravity.CENTER_VERTICAL);
         mDotViews.clear();
         for (int i = 0; i < mCount; i++) {
             DotView dotView = new DotView(getContext());
@@ -44,6 +43,7 @@ public class DotIndicator extends LinearLayout {
             addView(dotView, params);
             mDotViews.add(dotView);
         }
+        // 初始化默认第一个被选中
         setCurrentDot(0);
     }
 
@@ -57,8 +57,11 @@ public class DotIndicator extends LinearLayout {
 
     /** 设置当前被选中的指示点 */
     public void setCurrentDot(int position) {
-        int size = mDotViews.size();
-        for (int i = 0; i < size; i++) {
+        position = position % mCount;
+        if (position < 0) {
+            position += mCount;
+        }
+        for (int i = 0; i < mCount; i++) {
             mDotViews.get(i).setSelected(i == position);
         }
     }
