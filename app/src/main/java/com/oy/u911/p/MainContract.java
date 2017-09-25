@@ -8,7 +8,7 @@ import com.oy.u911.m.DailyNewsJson;
  * Describe :
  */
 
-public interface Contract {
+public interface MainContract {
     interface View {
         void setDailyListData(DailyNewsJson topStoryData);
     }

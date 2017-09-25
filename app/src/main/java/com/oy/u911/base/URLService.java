@@ -1,4 +1,4 @@
-package com.oy.u911.p;
+package com.oy.u911.base;
 
 import com.oy.u911.m.DailyNewsJson;
 import com.oy.u911.m.NewsDetailJson;
@@ -20,7 +20,7 @@ import retrofit2.http.Path;
  *     |-然后定义至少一个接口方法
  *       |-然后构建Retrofit
  *        |-然后调用create方法生成接口类
- *         |-然后调用enqueue或者 execute方法发送一个异步或同步请求
+ *         |-然后调用enqueue或者 execute方法发送一个异步或同步请求(请求返回为Call类型时)
  * </pre>
  */
 

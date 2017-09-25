@@ -9,15 +9,15 @@ import android.widget.Toast;
 import com.oy.u911.adapter.StoryListAdapter;
 import com.oy.u911.base.BaseActivity;
 import com.oy.u911.m.DailyNewsJson;
-import com.oy.u911.p.Contract;
-import com.oy.u911.p.Presenter;
+import com.oy.u911.p.MainContract;
+import com.oy.u911.p.MainPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MainActivity extends BaseActivity implements Contract.View, StoryListAdapter.OnChildClickListener {
+public class MainActivity extends BaseActivity implements MainContract.View, StoryListAdapter.OnChildClickListener {
 
-    Presenter mPresenter = new Presenter(this);
+    MainPresenter mPresenter = new MainPresenter(this);
 
     @InjectView(R.id.story_list)
     RecyclerView mRecyclerView;

@@ -17,7 +17,7 @@ public class NewsDetailJson {
     private String mBody;
 
     /** 图片的内容提供方. 最好附上来避免版权问题 */
-    @SerializedName("image-source")
+    @SerializedName("image_source")
     private String mImageSource;
 
     /** 新闻标题 */

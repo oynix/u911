@@ -2,7 +2,7 @@ package com.oy.u911.p;
 
 import android.util.Log;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.oy.u911.base.BaseRequestable;
 import com.oy.u911.m.DailyNewsJson;
 import com.oy.u911.m.StartImageJson;
 
@@ -10,8 +10,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Author   : xiaoyu
@@ -19,24 +17,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Describe :
  */
 
-public class Presenter implements Contract.Presenter {
+public class MainPresenter extends BaseRequestable implements MainContract.Presenter {
 
-    private static final String TAG = "presenter";
-    public static final String BASE_URL = "http://news-at.zhihu.com/api/4/";
+    private static final String TAG = MainPresenter.class.getSimpleName();
 
-    private Contract.View mView;
-    private final URLService mUrlService;
+    private MainContract.View mView;
 
-    public Presenter(Contract.View view) {
+    public MainPresenter(MainContract.View view) {
         mView = view;
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(new NullOnEmptyConverterFactory())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-
-        mUrlService = retrofit.create(URLService.class);
     }
 
     @Override
