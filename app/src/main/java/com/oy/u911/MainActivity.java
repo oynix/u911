@@ -12,20 +12,27 @@ import com.oy.u911.m.DailyNewsJson;
 import com.oy.u911.p.Contract;
 import com.oy.u911.p.Presenter;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 public class MainActivity extends BaseActivity implements Contract.View, StoryListAdapter.OnChildClickListener {
 
     Presenter mPresenter = new Presenter(this);
-    private RecyclerView mRecyclerView;
+
+    @InjectView(R.id.story_list)
+    RecyclerView mRecyclerView;
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.story_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         mPresenter.loadLatestNews();

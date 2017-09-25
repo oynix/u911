@@ -20,22 +20,36 @@
             app:expandedTitleMarginEnd="96dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <View
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#3799ff"
-                app:layout_collapseMode="pin"/>
+                app:layout_collapseMode="pin">
+
+                <ImageView
+                    android:id="@+id/title_bg_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/title_bg_iv_copyright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="14dp"/>
+            </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:contentInsetStart="0dp"
-                app:titleMarginStart="0dp"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/ic_arrow_back_white"
-                app:title="日报详情"/>
+                app:title="日报详情"
+                app:titleMarginStart="0dp"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

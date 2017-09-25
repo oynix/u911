@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import com.oy.u911.base.BaseActivity;
 import com.oy.u911.m.DailyNewsJson;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/25 14:42
@@ -20,6 +23,9 @@ import com.oy.u911.m.DailyNewsJson;
 public class StoryDetailActivity extends BaseActivity {
 
     private static final String STORY_DATA_KEY = "story_data";
+
+    @InjectView(R.id.detail_toolbar)
+    private Toolbar mToolbar;
 
     public static void loadDetail(Context context, @NonNull DailyNewsJson.Story story) {
         Bundle bundle = new Bundle();
@@ -36,11 +42,11 @@ public class StoryDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_detail);
+        ButterKnife.inject(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
-        toolbar.setNavigationOnClickListener(mClickFinishListener);
+        mToolbar.setNavigationOnClickListener(mClickFinishListener);
     }
 
 }

@@ -20,6 +20,10 @@ import com.oy.u911.v.DotIndicator;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.Optional;
+
 /**
  * Author   : xiaoyu
  * Date     : 2017/9/18 9:13
@@ -99,23 +103,33 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     class MyHolder extends RecyclerView.ViewHolder {
 
         // header
+        @Optional
+        @InjectView(R.id.header_view_pager)
         ViewPager viewPager;
+
+        @Optional
+        @InjectView(R.id.header_dot_indicator)
         DotIndicator indicator;
 
         // item
+        @Optional
+        @InjectView(R.id.item_icon)
         ImageView itemIcon;
+
+        @Optional
+        @InjectView(R.id.item_name)
         TextView itemTitle;
+
         MyHandler handler;
 
         int holderType;
 
         MyHolder(View itemView, int type) {
             super(itemView);
+            ButterKnife.inject(this, itemView);
             holderType = type;
             // header
             if (type == 0) {
-                viewPager = itemView.findViewById(R.id.header_view_pager);
-                indicator = itemView.findViewById(R.id.header_dot_indicator);
                 handler = new MyHandler(viewPager);
                 // 滑动监听
                 viewPager.addOnPageChangeListener(new OnPageChangeAdapter() {
@@ -155,10 +169,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
                         }
                     }
                 });
-            } else {
-                // item
-                itemIcon = itemView.findViewById(R.id.item_icon);
-                itemTitle = itemView.findViewById(R.id.item_name);
             }
         }
     }
