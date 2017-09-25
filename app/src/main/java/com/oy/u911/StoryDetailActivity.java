@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +45,12 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailCont
 
     @InjectView(R.id.web_view)
     WebView mWebView;
+
+    @InjectView(R.id.nested_scroll_view)
+    NestedScrollView mScrollView;
+
+    @InjectView(R.id.tv_load_error_tip)
+    TextView mTvErrorTip;
 
     private StoryDetailPresenter mPresenter = new StoryDetailPresenter(this);
 
@@ -82,7 +90,8 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailCont
 
     @Override
     public void showError() {
-
+        mScrollView.setVisibility(View.GONE);
+        mTvErrorTip.setVisibility(View.VISIBLE);
     }
 
     public static void loadDetail(Context context, @NonNull DailyNewsJson.Story story) {

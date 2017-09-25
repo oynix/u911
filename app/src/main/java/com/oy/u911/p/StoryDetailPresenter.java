@@ -60,6 +60,7 @@ public class StoryDetailPresenter extends BaseRequestable implements StoryDetail
                         @Override
                         public void onError(Throwable e) {
                             e.printStackTrace();
+                            mView.showError();
                         }
 
                         @Override
