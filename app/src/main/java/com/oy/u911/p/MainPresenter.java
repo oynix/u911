@@ -82,6 +82,7 @@ public class MainPresenter extends BaseRequestable implements MainContract.Prese
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
+                        mView.showError();
                     }
 
                     @Override

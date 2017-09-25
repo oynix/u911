@@ -75,8 +75,7 @@
         <WebView
             android:id="@+id/web_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:layout_height="match_parent"/>
 
     </android.support.v4.widget.NestedScrollView>
 
@@ -87,7 +86,7 @@
         android:layout_marginTop="20dp"
         android:alpha="0.7"
         android:gravity="center"
-        android:text="加载失败, 请检查后重试"
+        android:text="@string/error_tip"
         android:textColor="#4d4d4d"
         android:textSize="18dp"
         android:textStyle="bold"

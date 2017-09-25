@@ -11,6 +11,7 @@ import com.oy.u911.m.DailyNewsJson;
 public interface MainContract {
     interface View {
         void setDailyListData(DailyNewsJson topStoryData);
+        void showError();
     }
 
     interface Presenter {

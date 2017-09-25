@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
 
 import com.oy.u911.adapter.StoryListAdapter;
 import com.oy.u911.base.BaseActivity;
@@ -24,6 +25,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Sto
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
+
+    @InjectView(R.id.tv_load_error_tip)
+    TextView mErrorTip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +49,17 @@ public class MainActivity extends BaseActivity implements MainContract.View, Sto
         mRecyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void showError() {
+        mRecyclerView.setVisibility(View.GONE);
+        mErrorTip.setVisibility(View.VISIBLE);
+    }
+
 
     /** RecyclerView 点击监听 */
     @Override
     public void onChildClick(DailyNewsJson.Story story) {
-        Toast.makeText(getApplicationContext(), "RecyclerView点击:" + story.getStoryTitle(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "RecyclerView点击:" + story.getStoryTitle(), Toast.LENGTH_SHORT).show();
         if (story != null) {
             StoryDetailActivity.loadDetail(this, story);
         }
