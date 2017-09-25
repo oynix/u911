@@ -15,33 +15,33 @@
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginEnd="96dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
+                android:layout_height="250dp"
                 android:background="#3799ff"
                 app:layout_collapseMode="pin"/>
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="0dp"
+                app:titleMarginStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
-                app:logo="@mipmap/ic_launcher"
-                app:navigationIcon="@mipmap/ic_launcher"
-                app:subtitle="subTitle"
-                app:subtitleTextColor="@android:color/white"
-                app:title="@string/app_name"
-                app:titleMarginStart="20dp"
-                app:titleTextColor="@android:color/white"/>
+                app:navigationIcon="@drawable/ic_arrow_back_white"
+                app:title="日报详情"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
@@ -49,14 +49,7 @@
             android:layout_height="wrap_content"
             android:text="@string/long_text"
             android:textSize="25dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/story_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package com.oy.u911.m;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * Describe : 某日的所有新闻概览Json
  */
 
-public class DailyNewsJson {
+public class DailyNewsJson implements Serializable {
 
     /** 日期 */
     @SerializedName("date")
@@ -50,7 +51,7 @@ public class DailyNewsJson {
     /**
      * 每条新闻概览信息Json
      */
-    public static class Story {
+    public static class Story implements Serializable {
 
         /** 新闻标题 */
         @SerializedName("title")

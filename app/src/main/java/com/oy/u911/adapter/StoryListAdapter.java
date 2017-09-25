@@ -193,12 +193,13 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
         @Override
         public void handleMessage(Message msg) {
-            Loger.d(TAG, "接收消息: " + msg.what);
             switch (msg.what) {
                 case MESSAGE_PAUSE:
+                    Loger.d(TAG, "接收消息: MESSAGE_PAUSE" + msg.what);
                     removeCallbacksAndMessages(null);
                     break;
                 case MESSAGE_NEXT:
+                    Loger.d(TAG, "接收消息: MESSAGE_NEXT" + msg.what);
                     if (mReference.get() != null) {
                         int currentItem = mReference.get().getCurrentItem();
                         mReference.get().setCurrentItem(currentItem + 1);
@@ -206,6 +207,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
                     sendEmptyMessageDelayed(MESSAGE_NEXT, MESSAGE_DELAYED);
                     break;
                 case MESSAGE_CONTINUE:
+                    Loger.d(TAG, "接收消息: MESSAGE_CONTINUE" + msg.what);
                     sendEmptyMessageDelayed(MESSAGE_NEXT, MESSAGE_DELAYED);
                     break;
             }

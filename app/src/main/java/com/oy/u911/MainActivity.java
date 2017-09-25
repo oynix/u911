@@ -43,5 +43,8 @@ public class MainActivity extends BaseActivity implements Contract.View, StoryLi
     @Override
     public void onChildClick(DailyNewsJson.Story story) {
         Toast.makeText(getApplicationContext(), "RecyclerView点击:" + story.getStoryTitle(), Toast.LENGTH_SHORT).show();
+        if (story != null) {
+            StoryDetailActivity.loadDetail(this, story);
+        }
     }
 }
