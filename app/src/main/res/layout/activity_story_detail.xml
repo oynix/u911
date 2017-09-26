@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context="com.oy.u911.MainActivity">
+    tools:context="com.oy.u911.function.zhihu_daily.ZhihuIndexActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

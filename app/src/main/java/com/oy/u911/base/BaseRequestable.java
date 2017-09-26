@@ -11,20 +11,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Describe : 请求的基类
  */
 
-public class BaseRequestable {
+public abstract class BaseRequestable<T> {
 
-    private static final String BASE_URL = "http://news-at.zhihu.com/api/4/";
+    protected static final String ZHIHU_BASE_URL = "http://news-at.zhihu.com/api/4/";
 
-    protected final URLService mUrlService;
+    protected final T mUrlService;
 
-    public BaseRequestable() {
+    public BaseRequestable(Class<T> cls) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(getBaseUrl())
                 .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
-        mUrlService = retrofit.create(URLService.class);
+        mUrlService = retrofit.create(cls);
     }
+
+    protected abstract String getBaseUrl();
 }

@@ -1,67 +1,33 @@
 package com.oy.u911;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.TextView;
 
-import com.oy.u911.adapter.StoryListAdapter;
 import com.oy.u911.base.BaseActivity;
-import com.oy.u911.m.DailyNewsJson;
-import com.oy.u911.p.MainContract;
-import com.oy.u911.p.MainPresenter;
+import com.oy.u911.function.zhihu_daily.ZhihuIndexActivity;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements MainContract.View, StoryListAdapter.OnChildClickListener {
+/**
+ * Author   : xiaoyu
+ * Date     : 2017/9/26 14:04
+ * Describe :
+ */
 
-    MainPresenter mPresenter = new MainPresenter(this);
-
-    @InjectView(R.id.story_list)
-    RecyclerView mRecyclerView;
-
-    @InjectView(R.id.toolbar)
-    Toolbar mToolbar;
-
-    @InjectView(R.id.tv_load_error_tip)
-    TextView mErrorTip;
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-
-        setSupportActionBar(mToolbar);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
-        mPresenter.loadLatestNews();
     }
 
-    @Override
-    public void setDailyListData(DailyNewsJson dailyData) {
-        StoryListAdapter adapter = new StoryListAdapter(this, dailyData);
-        adapter.setOnChildClickListener(this);
-        mRecyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void showError() {
-        mRecyclerView.setVisibility(View.GONE);
-        mErrorTip.setVisibility(View.VISIBLE);
-    }
-
-
-    /** RecyclerView 点击监听 */
-    @Override
-    public void onChildClick(DailyNewsJson.Story story) {
-//        Toast.makeText(getApplicationContext(), "RecyclerView点击:" + story.getStoryTitle(), Toast.LENGTH_SHORT).show();
-        if (story != null) {
-            StoryDetailActivity.loadDetail(this, story);
-        }
+    @OnClick(R.id.main_entrance_zhihu)
+    void onZhihuClick(View v) {
+        startActivity(new Intent(this, ZhihuIndexActivity.class));
     }
 }

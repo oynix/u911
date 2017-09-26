@@ -1,4 +1,4 @@
-package com.oy.u911.v;
+package com.oy.u911.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -17,11 +17,6 @@ import com.oy.u911.util.DrawUtil;
  */
 
 public class DotView extends View {
-
-    public static final int STATE_TYPE_NORMAL = 0x01;
-    public static final int STATE_TYPE_SELECTED = 0x02;
-
-    private int mState;
 
     public DotView(Context context) {
         super(context);

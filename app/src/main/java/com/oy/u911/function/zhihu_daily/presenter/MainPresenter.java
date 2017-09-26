@@ -1,10 +1,11 @@
-package com.oy.u911.p;
+package com.oy.u911.function.zhihu_daily.presenter;
 
 import android.util.Log;
 
 import com.oy.u911.base.BaseRequestable;
-import com.oy.u911.m.DailyNewsJson;
-import com.oy.u911.m.StartImageJson;
+import com.oy.u911.function.zhihu_daily.service.ZhihuURLService;
+import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
+import com.oy.u911.function.zhihu_daily.model.StartImageJson;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,13 +18,14 @@ import io.reactivex.schedulers.Schedulers;
  * Describe :
  */
 
-public class MainPresenter extends BaseRequestable implements MainContract.Presenter {
+public class MainPresenter extends BaseRequestable<ZhihuURLService> implements MainContract.Presenter {
 
     private static final String TAG = MainPresenter.class.getSimpleName();
 
     private MainContract.View mView;
 
     public MainPresenter(MainContract.View view) {
+        super(ZhihuURLService.class);
         mView = view;
     }
 
@@ -90,5 +92,10 @@ public class MainPresenter extends BaseRequestable implements MainContract.Prese
 
                     }
                 });
+    }
+
+    @Override
+    protected String getBaseUrl() {
+        return BaseRequestable.ZHIHU_BASE_URL;
     }
 }

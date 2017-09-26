@@ -1,6 +1,6 @@
 package com.oy.u911.util;
 
-import com.oy.u911.m.NewsDetailJson;
+import com.oy.u911.function.zhihu_daily.model.NewsDetailJson;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.oy.u911.p;
+package com.oy.u911.function.zhihu_daily.presenter;
 
-import com.oy.u911.m.DailyNewsJson;
+import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
 
 /**
  * Author   : xiaoyu

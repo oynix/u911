@@ -1,4 +1,4 @@
-package com.oy.u911.adapter;
+package com.oy.u911.function.zhihu_daily.adapter;
 
 import android.content.Context;
 import android.os.Handler;
@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.oy.u911.R;
-import com.oy.u911.m.DailyNewsJson;
+import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
 import com.oy.u911.util.DrawUtil;
 import com.oy.u911.util.Loger;
-import com.oy.u911.v.DotIndicator;
+import com.oy.u911.view.DotIndicator;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

@@ -6,7 +6,7 @@
                 android:minHeight="70dp"
                 android:orientation="horizontal">
 
-    <com.oy.u911.v.CircleImageView
+    <com.oy.u911.view.CircleImageView
         android:id="@+id/item_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"

@@ -1,4 +1,4 @@
-package com.oy.u911;
+package com.oy.u911.function.zhihu_daily;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,11 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
-import com.oy.u911.m.DailyNewsJson;
-import com.oy.u911.m.NewsDetailJson;
-import com.oy.u911.p.StoryDetailContract;
-import com.oy.u911.p.StoryDetailPresenter;
+import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
+import com.oy.u911.function.zhihu_daily.model.NewsDetailJson;
+import com.oy.u911.function.zhihu_daily.presenter.StoryDetailContract;
+import com.oy.u911.function.zhihu_daily.presenter.StoryDetailPresenter;
 import com.oy.u911.util.HtmlUtil;
 
 import butterknife.ButterKnife;

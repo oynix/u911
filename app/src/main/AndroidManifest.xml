@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".MainActivity">
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,8 +24,13 @@
         </activity>
 
         <activity
-            android:name=".StoryDetailActivity"
+            android:name=".function.zhihu_daily.ZhihuIndexActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".function.zhihu_daily.StoryDetailActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
