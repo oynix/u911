@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
@@ -37,6 +40,9 @@ public class UrlBrowserActivity extends BaseActivity {
     @InjectView(R.id.url_toolbar)
     Toolbar mToolbar;
 
+    @InjectView(R.id.url_progressbar)
+    ProgressBar mProgressBar;
+
     @InjectView(R.id.url_webview)
     WebView mWebView;
 
@@ -55,6 +61,16 @@ public class UrlBrowserActivity extends BaseActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
+            }
+        });
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mProgressBar.setProgress(newProgress);
+                if (newProgress == 100) {
+                    mProgressBar.setVisibility(View.GONE);
+                }
             }
         });
         String url = getIntent().getStringExtra(KEY_URL);

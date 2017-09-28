@@ -16,6 +16,13 @@
         app:title="@string/detail"
         app:titleMarginStart="0dp"/>
 
+    <ProgressBar
+        android:id="@+id/url_progressbar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:progressDrawable="@drawable/progress_bar"
+        android:layout_height="2dp"/>
+
     <WebView
         android:id="@+id/url_webview"
         android:layout_width="match_parent"
