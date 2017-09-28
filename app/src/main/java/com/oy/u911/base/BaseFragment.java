@@ -1,6 +1,7 @@
 package com.oy.u911.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,11 +19,13 @@ import android.widget.TextView;
 public class BaseFragment extends Fragment {
 
     protected Activity mActivity;
+    protected Context mContext;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mActivity = activity;
+        mContext = activity.getApplicationContext();
     }
 
     @Override

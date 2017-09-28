@@ -42,6 +42,7 @@ public class GankPresenter extends BaseRequestable<GankURLService> implements Ga
                     @Override
                     public void onNext(GankResponseBean value) {
                         Loger.d(TAG, value.toString());
+                        mView.setListData(value.getResults());
                     }
 
                     @Override

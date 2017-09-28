@@ -2,7 +2,11 @@ package com.oy.u911.function.gank.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+
+import com.oy.u911.function.gank.fragment.GankFragment;
+
+import java.util.List;
 
 /**
  * Author   : xiaoyu
@@ -10,18 +14,27 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  * Describe :
  */
 
-public class GankViewPagerAdapter extends FragmentStatePagerAdapter {
-    public GankViewPagerAdapter(FragmentManager fm) {
+public class GankViewPagerAdapter extends FragmentPagerAdapter {
+
+    private List<String> mTitleList;
+
+    public GankViewPagerAdapter(FragmentManager fm, List<String> titleList) {
         super(fm);
+        mTitleList = titleList;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return GankFragment.newInstance(mTitleList.get(position));
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mTitleList.get(position);
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return mTitleList.size();
     }
 }

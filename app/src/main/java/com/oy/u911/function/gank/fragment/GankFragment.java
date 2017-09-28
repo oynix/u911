@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.oy.u911.R;
 import com.oy.u911.base.BaseFragment;
+import com.oy.u911.function.gank.adapter.GankNewsAdapter;
 import com.oy.u911.function.gank.bean.GankNewsBean;
 import com.oy.u911.function.gank.presenter.GankContract;
 import com.oy.u911.function.gank.presenter.GankPresenter;
@@ -16,6 +20,9 @@ import com.oy.u911.function.gank.presenter.GankPresenter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -49,7 +56,7 @@ public class GankFragment extends BaseFragment implements GankContract.View {
             GANK_FRAGMENT_TYPE_FULI, GANK_FRAGMENT_TYPE_XIATUIJIAN,
             GANK_FRAGMENT_TYPE_XIUXISHIPIN, GANK_FRAGMENT_TYPE_TUOZHANZIYUAN})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface GrankFragmentType{
+    @interface GrankFragmentType{
 
     }
 
@@ -66,6 +73,9 @@ public class GankFragment extends BaseFragment implements GankContract.View {
 
     private String mFragmentType;
 
+    @InjectView(R.id.gank_recycler_view)
+    RecyclerView mRecyclerView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,14 +85,13 @@ public class GankFragment extends BaseFragment implements GankContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.fragment_gank, null);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        // TODO: 2017/9/28  initialize widgets
-
-
+        ButterKnife.inject(this, view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         mPresenter.onViewCreate(mFragmentType);
     }
 
@@ -93,6 +102,6 @@ public class GankFragment extends BaseFragment implements GankContract.View {
 
     @Override
     public void setListData(List<GankNewsBean> listData) {
-
+        mRecyclerView.setAdapter(new GankNewsAdapter(listData));
     }
 }
