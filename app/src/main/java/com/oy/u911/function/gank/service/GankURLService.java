@@ -22,4 +22,9 @@ public interface GankURLService {
             @Path("pagecount") int countPerPage,
             @Path("page") int page);
 
+    @GET("random/data/{category}/{count}")
+    Observable<GankResponseBean> requestRandomData(
+            @Path("category") String category,
+            @Path("count") int count);
+
 }

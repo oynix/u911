@@ -35,7 +35,8 @@ public class GankPresenter extends BaseRequestable<GankURLService> implements Ga
     @Override
     public void onViewCreate(String type, int count) {
         mView.setPageState(true);
-        mUrlService.requestData(type, count, 1)
+//        mUrlService.requestData(type, count, 1)
+        mUrlService.requestRandomData(type, count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<GankResponseBean>() {
