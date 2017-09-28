@@ -9,4 +9,7 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
+    <style name="TabItem">
+        <item name="android:textColorPrimary">#4d4d4d</item>
+    </style>
 </resources>

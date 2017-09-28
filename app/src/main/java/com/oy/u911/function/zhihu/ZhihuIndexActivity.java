@@ -1,4 +1,4 @@
-package com.oy.u911.function.zhihu_daily;
+package com.oy.u911.function.zhihu;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
-import com.oy.u911.function.zhihu_daily.adapter.StoryListAdapter;
-import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
-import com.oy.u911.function.zhihu_daily.presenter.MainContract;
-import com.oy.u911.function.zhihu_daily.presenter.MainPresenter;
+import com.oy.u911.function.zhihu.adapter.StoryListAdapter;
+import com.oy.u911.function.zhihu.model.DailyNewsJson;
+import com.oy.u911.function.zhihu.presenter.MainContract;
+import com.oy.u911.function.zhihu.presenter.MainPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

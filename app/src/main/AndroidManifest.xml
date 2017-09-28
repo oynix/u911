@@ -23,12 +23,18 @@
             </intent-filter>
         </activity>
 
+        <!-- 知乎日报 -->
         <activity
-            android:name=".function.zhihu_daily.ZhihuIndexActivity"
+            android:name=".function.zhihu.ZhihuIndexActivity"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".function.zhihu_daily.StoryDetailActivity"
+            android:name=".function.zhihu.StoryDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 干货集中营 -->
+        <activity
+            android:name=".function.gank.GankActivity"
             android:screenOrientation="portrait"/>
 
     </application>

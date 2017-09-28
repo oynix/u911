@@ -13,8 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class BaseRequestable<T> {
 
-    protected static final String ZHIHU_BASE_URL = "http://news-at.zhihu.com/api/4/";
-
     protected final T mUrlService;
 
     public BaseRequestable(Class<T> cls) {

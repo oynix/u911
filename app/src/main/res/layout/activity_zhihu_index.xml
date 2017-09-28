@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context="com.oy.u911.function.zhihu_daily.ZhihuIndexActivity">
+    tools:context="com.oy.u911.function.zhihu.ZhihuIndexActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,9 +18,7 @@
         app:contentInsetStartWithNavigation="0dp"
         app:navigationIcon="@drawable/ic_arrow_back_white"
         app:title="@string/zhihu_text"
-        app:titleMarginStart="0dp"
-        app:titleTextAppearance="?android:attr/textAppearanceLarge"
-        app:titleTextColor="@android:color/white"/>
+        app:titleMarginStart="0dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/story_list"

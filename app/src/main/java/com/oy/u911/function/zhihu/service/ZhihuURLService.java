@@ -1,8 +1,8 @@
-package com.oy.u911.function.zhihu_daily.service;
+package com.oy.u911.function.zhihu.service;
 
-import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
-import com.oy.u911.function.zhihu_daily.model.NewsDetailJson;
-import com.oy.u911.function.zhihu_daily.model.StartImageJson;
+import com.oy.u911.function.zhihu.model.DailyNewsJson;
+import com.oy.u911.function.zhihu.model.NewsDetailJson;
+import com.oy.u911.function.zhihu.model.StartImageJson;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -25,6 +25,8 @@ import retrofit2.http.Path;
  */
 
 public interface ZhihuURLService {
+
+    String ZHIHU_BASE_URL = "http://news-at.zhihu.com/api/4/";
 
     /** 获取启动图片 */
     @GET("start-image/1080*1776")

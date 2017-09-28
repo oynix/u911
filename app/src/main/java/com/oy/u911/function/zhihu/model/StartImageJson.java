@@ -1,4 +1,4 @@
-package com.oy.u911.function.zhihu_daily.model;
+package com.oy.u911.function.zhihu.model;
 
 import com.google.gson.annotations.SerializedName;
 

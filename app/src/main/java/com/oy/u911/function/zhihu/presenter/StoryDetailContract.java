@@ -1,9 +1,9 @@
-package com.oy.u911.function.zhihu_daily.presenter;
+package com.oy.u911.function.zhihu.presenter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import com.oy.u911.function.zhihu_daily.model.NewsDetailJson;
+import com.oy.u911.function.zhihu.model.NewsDetailJson;
 
 /**
  * Author   : xiaoyu

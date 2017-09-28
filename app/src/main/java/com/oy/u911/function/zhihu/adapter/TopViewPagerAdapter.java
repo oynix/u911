@@ -1,4 +1,4 @@
-package com.oy.u911.function.zhihu_daily.adapter;
+package com.oy.u911.function.zhihu.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.oy.u911.R;
-import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
+import com.oy.u911.function.zhihu.model.DailyNewsJson;
 import com.oy.u911.util.Loger;
 
 import java.util.List;

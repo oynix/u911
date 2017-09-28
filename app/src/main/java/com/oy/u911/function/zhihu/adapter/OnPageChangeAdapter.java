@@ -1,4 +1,4 @@
-package com.oy.u911.function.zhihu_daily.adapter;
+package com.oy.u911.function.zhihu.adapter;
 
 import android.support.v4.view.ViewPager;
 

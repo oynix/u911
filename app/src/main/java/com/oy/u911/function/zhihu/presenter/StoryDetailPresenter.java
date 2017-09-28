@@ -1,12 +1,12 @@
-package com.oy.u911.function.zhihu_daily.presenter;
+package com.oy.u911.function.zhihu.presenter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.oy.u911.base.BaseRequestable;
-import com.oy.u911.function.zhihu_daily.service.ZhihuURLService;
-import com.oy.u911.function.zhihu_daily.model.DailyNewsJson;
-import com.oy.u911.function.zhihu_daily.model.NewsDetailJson;
+import com.oy.u911.function.zhihu.service.ZhihuURLService;
+import com.oy.u911.function.zhihu.model.DailyNewsJson;
+import com.oy.u911.function.zhihu.model.NewsDetailJson;
 import com.oy.u911.util.Loger;
 
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.oy.u911.function.zhihu_daily.StoryDetailActivity.STORY_DATA_KEY;
+import static com.oy.u911.function.zhihu.StoryDetailActivity.STORY_DATA_KEY;
 
 /**
  * Author   : xiaoyu
@@ -75,6 +75,6 @@ public class StoryDetailPresenter extends BaseRequestable<ZhihuURLService> imple
 
     @Override
     protected String getBaseUrl() {
-        return BaseRequestable.ZHIHU_BASE_URL;
+        return ZhihuURLService.ZHIHU_BASE_URL;
     }
 }

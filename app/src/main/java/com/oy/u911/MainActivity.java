@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.oy.u911.base.BaseActivity;
-import com.oy.u911.function.zhihu_daily.ZhihuIndexActivity;
+import com.oy.u911.function.gank.GankActivity;
+import com.oy.u911.function.zhihu.ZhihuIndexActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,5 +30,10 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.main_entrance_zhihu)
     void onZhihuClick(View v) {
         startActivity(new Intent(this, ZhihuIndexActivity.class));
+    }
+
+    @OnClick(R.id.main_entrance_gank)
+    void onGankClick(View v) {
+        startActivity(new Intent(this, GankActivity.class));
     }
 }
