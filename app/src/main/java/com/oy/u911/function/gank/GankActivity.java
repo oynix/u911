@@ -56,8 +56,9 @@ public class GankActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(mClickFinishListener);
 
+        // 全部缓存
+        mViewPager.setOffscreenPageLimit(8);
         GankViewPagerAdapter adapter = new GankViewPagerAdapter(getSupportFragmentManager(), mFragmentType);
         mViewPager.setAdapter(adapter);
-        mTabLayout.setupWithViewPager(mViewPager);
     }
 }

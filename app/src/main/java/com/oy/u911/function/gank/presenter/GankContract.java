@@ -17,5 +17,7 @@ public interface GankContract {
     }
     interface Presenter {
         void onViewCreate(String type);
+        // count : 一次请求多少条数据
+        void onViewCreate(String type, int count);
     }
 }

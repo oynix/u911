@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,7 +57,7 @@ public class GankFragment extends BaseFragment implements GankContract.View {
             GANK_FRAGMENT_TYPE_FULI, GANK_FRAGMENT_TYPE_XIATUIJIAN,
             GANK_FRAGMENT_TYPE_XIUXISHIPIN, GANK_FRAGMENT_TYPE_TUOZHANZIYUAN})
     @Retention(RetentionPolicy.SOURCE)
-    @interface GrankFragmentType{
+    @interface GrankFragmentType {
 
     }
 
@@ -91,8 +92,15 @@ public class GankFragment extends BaseFragment implements GankContract.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ButterKnife.inject(this, view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-        mPresenter.onViewCreate(mFragmentType);
+        if (mFragmentType.equals(GANK_FRAGMENT_TYPE_FULI)) {
+            mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false));
+            // 福利页面一次请求60条数据
+            mPresenter.onViewCreate(mFragmentType, 60);
+        } else {
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+            // 其他页面一次请求默认的40条数据
+            mPresenter.onViewCreate(mFragmentType);
+        }
     }
 
     @Override
@@ -102,6 +110,10 @@ public class GankFragment extends BaseFragment implements GankContract.View {
 
     @Override
     public void setListData(List<GankNewsBean> listData) {
-        mRecyclerView.setAdapter(new GankNewsAdapter(listData));
+        if (mFragmentType.equals(GANK_FRAGMENT_TYPE_FULI)) {
+            mRecyclerView.setAdapter(new GankNewsAdapter(this, listData, true));
+        } else {
+            mRecyclerView.setAdapter(new GankNewsAdapter(this, listData));
+        }
     }
 }

@@ -4,9 +4,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/gank_recycler_view"
+    <ImageView
+        android:id="@+id/gank_item_image_fuli"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"/>
+        android:layout_height="180dp"
+        android:contentDescription="@null"
+        android:padding="2dp"
+        android:scaleType="centerCrop"/>
 </LinearLayout>
