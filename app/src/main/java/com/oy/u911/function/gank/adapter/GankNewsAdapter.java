@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.oy.u911.R;
 import com.oy.u911.function.gank.BrowserImageActivity;
+import com.oy.u911.function.gank.UrlBrowserActivity;
 import com.oy.u911.function.gank.bean.GankNewsBean;
 import com.oy.u911.util.DataHub;
 
@@ -64,13 +65,19 @@ public class GankNewsAdapter extends RecyclerView.Adapter<GankNewsAdapter.MyView
         if (!mIsFuli) {
             holder.title.setText(item.getDesc());
             holder.subtitle.setText(item.getPublishedAt());
-            List<String> images = item.getImages();
+            final List<String> images = item.getImages();
             if (images != null && images.size() > 0) {
                 holder.image.setVisibility(View.VISIBLE);
                 Glide.with(mFragment).load(images.get(0)).asBitmap().into(holder.image);
             } else {
                 holder.image.setVisibility(View.GONE);
             }
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UrlBrowserActivity.bowser(mFragment.getActivity(), item.getUrl());
+                }
+            });
         } else {
             Glide.with(mFragment).load(item.getUrl()).asBitmap().into(holder.imageFuli);
             holder.imageFuli.setOnClickListener(new View.OnClickListener() {

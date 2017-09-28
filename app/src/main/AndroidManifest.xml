@@ -41,6 +41,10 @@
             android:name=".function.gank.BrowserImageActivity"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".function.gank.UrlBrowserActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
