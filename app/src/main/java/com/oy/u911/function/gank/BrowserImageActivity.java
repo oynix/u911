@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
 import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
@@ -102,9 +103,11 @@ public class BrowserImageActivity extends BaseActivity implements ViewPager.OnPa
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            ImageView imageView = new ImageView(BrowserImageActivity.this);
+            PhotoView imageView = new PhotoView(BrowserImageActivity.this);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            imageView.enable();
             imageView.setLayoutParams(params);
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             GankNewsBean item = mDataList.get(position);
             Glide.with(BrowserImageActivity.this).load(item.getUrl()).asBitmap().into(imageView);
             container.addView(imageView);

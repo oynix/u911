@@ -58,4 +58,6 @@ dependencies {
 //    compile 'com.github.aurae.retrofit2:converter-logansquare'
 //    compile 'org.ligboy.retrofit2:converter-fastjson'
 //    compile 'org.ligboy.retrofit2:converter-fastjson-android'
+
+    compile 'com.bm.photoview:library:1.4.1'
 }
