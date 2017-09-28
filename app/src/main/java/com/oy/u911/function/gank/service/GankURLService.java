@@ -1,4 +1,4 @@
-package com.oy.u911.function.gank;
+package com.oy.u911.function.gank.service;
 
 import com.oy.u911.function.gank.bean.GankResponseBean;
 

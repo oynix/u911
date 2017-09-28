@@ -1,7 +1,7 @@
 package com.oy.u911.function.gank.presenter;
 
 import com.oy.u911.base.BaseRequestable;
-import com.oy.u911.function.gank.GankURLService;
+import com.oy.u911.function.gank.service.GankURLService;
 import com.oy.u911.function.gank.bean.GankResponseBean;
 import com.oy.u911.util.Loger;
 
