@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.oy.u911.base.BaseActivity;
+import com.oy.u911.function.dribbble.DribbbleActivity;
 import com.oy.u911.function.gank.GankActivity;
 import com.oy.u911.function.zhihu.ZhihuIndexActivity;
 
@@ -35,5 +36,10 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.main_entrance_gank)
     void onGankClick(View v) {
         startActivity(new Intent(this, GankActivity.class));
+    }
+
+    @OnClick(R.id.main_entrance_dribbble)
+    void onDribbbleClick(View v) {
+        startActivity(new Intent(this, DribbbleActivity.class));
     }
 }
