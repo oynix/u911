@@ -1,6 +1,11 @@
 package com.oy.u911.function.dribbble;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 import com.oy.u911.base.BaseActivity;
+import com.oy.u911.function.dribbble.presenter.DribbbleContract;
+import com.oy.u911.function.dribbble.presenter.DribbblePresenter;
 
 /**
  * Author   : xiaoyu
@@ -8,5 +13,13 @@ import com.oy.u911.base.BaseActivity;
  * Describe :
  */
 
-public class DribbbleActivity extends BaseActivity {
+public class DribbbleActivity extends BaseActivity implements DribbbleContract.View{
+
+    private DribbblePresenter mPresenter = new DribbblePresenter(this);
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter.loadData();
+    }
 }

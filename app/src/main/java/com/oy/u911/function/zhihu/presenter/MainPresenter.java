@@ -25,7 +25,7 @@ public class MainPresenter extends BaseRequestable<ZhihuURLService> implements M
     private MainContract.View mView;
 
     public MainPresenter(MainContract.View view) {
-        super(ZhihuURLService.class);
+        super(ZhihuURLService.class, ZhihuURLService.ZHIHU_BASE_URL);
         mView = view;
     }
 
@@ -94,8 +94,4 @@ public class MainPresenter extends BaseRequestable<ZhihuURLService> implements M
                 });
     }
 
-    @Override
-    protected String getBaseUrl() {
-        return ZhihuURLService.ZHIHU_BASE_URL;
-    }
 }

@@ -23,7 +23,7 @@ public class GankPresenter extends BaseRequestable<GankURLService> implements Ga
     private final GankContract.View mView;
 
     public GankPresenter(GankContract.View view) {
-        super(GankURLService.class);
+        super(GankURLService.class, GankURLService.BASE_URL);
         mView = view;
     }
 
@@ -64,8 +64,4 @@ public class GankPresenter extends BaseRequestable<GankURLService> implements Ga
                 });
     }
 
-    @Override
-    protected String getBaseUrl() {
-        return GankURLService.BASE_URL;
-    }
 }

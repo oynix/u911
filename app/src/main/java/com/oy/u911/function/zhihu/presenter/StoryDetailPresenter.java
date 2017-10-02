@@ -31,7 +31,7 @@ public class StoryDetailPresenter extends BaseRequestable<ZhihuURLService> imple
     private StoryDetailContract.View mView;
 
     public StoryDetailPresenter(StoryDetailContract.View view) {
-        super(ZhihuURLService.class);
+        super(ZhihuURLService.class, ZhihuURLService.ZHIHU_BASE_URL);
         mView = view;
     }
 
@@ -71,10 +71,5 @@ public class StoryDetailPresenter extends BaseRequestable<ZhihuURLService> imple
                         }
                     });
         }
-    }
-
-    @Override
-    protected String getBaseUrl() {
-        return ZhihuURLService.ZHIHU_BASE_URL;
     }
 }
