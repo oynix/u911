@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Describe :
  */
 
-public class UserJson implements Serializable {
+public class UserJson extends BaseUnitJson implements Serializable {
 
     @SerializedName("teams_url")
     private String mTeamUrl;

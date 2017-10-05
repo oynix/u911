@@ -94,6 +94,114 @@ public class BaseUnitJson implements Serializable {
     @SerializedName("updated_time")
     private Date mUpdatedTime;
 
+    public int getId() {
+        return mId;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public String getUsername() {
+        return mUsername;
+    }
+
+    public String getHtmlUrl() {
+        return mHtmlUrl;
+    }
+
+    public String getAvatarUrl() {
+        return mAvatarUrl;
+    }
+
+    public String getBio() {
+        return mBio;
+    }
+
+    public String getLocation() {
+        return mLocation;
+    }
+
+    public LinkJson getLinkJson() {
+        return mLinkJson;
+    }
+
+    public int getBucketCount() {
+        return mBucketCount;
+    }
+
+    public int getCommentRecCount() {
+        return mCommentRecCount;
+    }
+
+    public int getFollowerCount() {
+        return mFollowerCount;
+    }
+
+    public int getFollowingCount() {
+        return mFollowingCount;
+    }
+
+    public int getLikeCount() {
+        return mLikeCount;
+    }
+
+    public int getLikeRecCount() {
+        return mLikeRecCount;
+    }
+
+    public int getShotCount() {
+        return mShotCount;
+    }
+
+    public int getTeamCount() {
+        return mTeamCount;
+    }
+
+    public boolean isCanUploadShot() {
+        return mCanUploadShot;
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public boolean isPro() {
+        return mPro;
+    }
+
+    public String getBucketUrl() {
+        return mBucketUrl;
+    }
+
+    public String getFollowerUrl() {
+        return mFollowerUrl;
+    }
+
+    public String getFollowingUrl() {
+        return mFollowingUrl;
+    }
+
+    public String getLikeUrl() {
+        return mLikeUrl;
+    }
+
+    public String getProjectUrl() {
+        return mProjectUrl;
+    }
+
+    public String getShotUrl() {
+        return mShotUrl;
+    }
+
+    public Date getCreatedTime() {
+        return mCreatedTime;
+    }
+
+    public Date getUpdatedTime() {
+        return mUpdatedTime;
+    }
+
     @Override
     public String toString() {
         return "BaseUnitJson{" +
