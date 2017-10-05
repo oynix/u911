@@ -13,8 +13,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.oy.u911.function.dribbble.service.DribbbleURLService.DRIBBBLE_BASE_URL;
-import static com.oy.u911.function.dribbble.service.DribbbleURLService.PARAM_LIST_ANIMATED;
-import static com.oy.u911.function.dribbble.service.DribbbleURLService.PARAM_SORT_VIEWS;
+import static com.oy.u911.function.dribbble.service.DribbbleURLService.PARAM_LIST_DEBUTS;
+import static com.oy.u911.function.dribbble.service.DribbbleURLService.PARAM_SORT_RECENT;
 import static com.oy.u911.function.dribbble.service.DribbbleURLService.PARAM_TIME_FRAME_WEEK;
 
 /**
@@ -36,7 +36,7 @@ public class DribbblePresenter extends BaseRequestable<DribbbleURLService> imple
 
     @Override
     public void loadData() {
-        mUrlService.getShots(PARAM_LIST_ANIMATED, PARAM_TIME_FRAME_WEEK, null, PARAM_SORT_VIEWS)
+        mUrlService.getShots(PARAM_LIST_DEBUTS, PARAM_TIME_FRAME_WEEK, null, PARAM_SORT_RECENT, 1, 40)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<ShotJson>>() {
@@ -47,6 +47,7 @@ public class DribbblePresenter extends BaseRequestable<DribbbleURLService> imple
                     @Override
                     public void onNext(List<ShotJson> value) {
                         Loger.e(TAG, value.toString());
+                        mView.setListData(value);
                     }
 
                     @Override

@@ -22,7 +22,7 @@ public interface DribbbleURLService {
     String ACCESS_TOKEN = "fc564af80a70b81dd492d151967e0451e74cdf43f22266ddcf54f8509b8fbd0f";
 
     /**
-     * possible value of the first parameter in{@link #getShots(String, String, Date, String)}
+     * possible value of the first parameter in{@link #getShots(String, String, Date, String, int, int)}
      */
     String PARAM_LIST_ANIMATED = "animated";
     String PARAM_LIST_ATTACHMENTS = "attachments";
@@ -32,7 +32,7 @@ public interface DribbbleURLService {
     String PARAM_LIST_TEAMS = "teams";
 
     /**
-     * possible value of the second parameter in{@link #getShots(String, String, Date, String)}
+     * possible value of the second parameter in{@link #getShots(String, String, Date, String, int, int)}
      */
     String PARAM_TIME_FRAME_WEEK = "week";
     String PARAM_TIME_FRAME_MONTH = "month";
@@ -40,7 +40,7 @@ public interface DribbbleURLService {
     String PARAM_TIME_FRAME_EVER = "ever";
 
     /**
-     * possible value of the fourth parameter in{@link #getShots(String, String, Date, String)}
+     * possible value of the fourth parameter in{@link #getShots(String, String, Date, String, int, int)}
      */
     String PARAM_SORT_COMMENTS = "comments";
     String PARAM_SORT_RECENT = "recent";
@@ -81,8 +81,10 @@ public interface DribbbleURLService {
     @Headers("Authorization: Bearer fc564af80a70b81dd492d151967e0451e74cdf43f22266ddcf54f8509b8fbd0f")
     @GET("shots")
     Observable<List<ShotJson>> getShots(@Query("list") String list,
-                                       @Query("timeframe") String timeframe,
-                                       @Query("date") Date date,
-                                       @Query("sort") String sort);
+                                        @Query("timeframe") String timeframe,
+                                        @Query("date") Date date,
+                                        @Query("sort") String sort,
+                                        @Query("page") int page,
+                                        @Query("per_page") int perPage);
 
 }
