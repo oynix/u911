@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface DribbbleContract {
     interface View {
+        void setWidgetState(boolean isLoading);
         void setListData(List<ShotJson> data);
     }
 

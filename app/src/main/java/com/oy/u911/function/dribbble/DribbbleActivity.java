@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
@@ -24,12 +26,15 @@ import butterknife.InjectView;
  * Describe :
  */
 
-public class DribbbleActivity extends BaseActivity implements DribbbleContract.View{
+public class DribbbleActivity extends BaseActivity implements DribbbleContract.View {
 
     private DribbblePresenter mPresenter = new DribbblePresenter(this);
 
     @InjectView(R.id.dribbble_toolbar)
     Toolbar mToolbar;
+
+    @InjectView(R.id.dribbble_loading_pb)
+    ProgressBar mProgressBar;
 
     @InjectView(R.id.dribbble_recycler_view)
     RecyclerView mRecyclerView;
@@ -48,6 +53,12 @@ public class DribbbleActivity extends BaseActivity implements DribbbleContract.V
 
 
         mPresenter.loadData();
+    }
+
+    @Override
+    public void setWidgetState(boolean isLoading) {
+        mProgressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        mRecyclerView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
     }
 
     @Override

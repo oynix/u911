@@ -36,6 +36,7 @@ public class DribbblePresenter extends BaseRequestable<DribbbleURLService> imple
 
     @Override
     public void loadData() {
+        mView.setWidgetState(true);
         mUrlService.getShots(PARAM_LIST_DEBUTS, PARAM_TIME_FRAME_WEEK, null, PARAM_SORT_RECENT, 1, 40)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -48,6 +49,7 @@ public class DribbblePresenter extends BaseRequestable<DribbbleURLService> imple
                     public void onNext(List<ShotJson> value) {
                         Loger.e(TAG, value.toString());
                         mView.setListData(value);
+                        mView.setWidgetState(false);
                     }
 
                     @Override
