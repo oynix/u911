@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -22,8 +18,12 @@ import com.oy.u911.function.zhihu.presenter.StoryDetailContract;
 import com.oy.u911.function.zhihu.presenter.StoryDetailPresenter;
 import com.oy.u911.util.HtmlUtil;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -35,22 +35,22 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailCont
 
     public static final String STORY_DATA_KEY = "story_data";
 
-    @InjectView(R.id.detail_toolbar)
+    @BindView(R.id.detail_toolbar)
     Toolbar mToolbar;
 
-    @InjectView(R.id.title_bg_iv)
+    @BindView(R.id.title_bg_iv)
     ImageView mTitleBgIv;
 
-    @InjectView(R.id.title_bg_iv_copyright)
+    @BindView(R.id.title_bg_iv_copyright)
     TextView mTvCopyRight;
 
-    @InjectView(R.id.web_view)
+    @BindView(R.id.web_view)
     WebView mWebView;
 
-    @InjectView(R.id.nested_scroll_view)
+    @BindView(R.id.nested_scroll_view)
     NestedScrollView mScrollView;
 
-    @InjectView(R.id.tv_load_error_tip)
+    @BindView(R.id.tv_load_error_tip)
     TextView mTvErrorTip;
 
     private StoryDetailPresenter mPresenter = new StoryDetailPresenter(this);
@@ -59,7 +59,7 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailCont
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_story_detail);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
 
@@ -73,7 +73,7 @@ public class StoryDetailActivity extends BaseActivity implements StoryDetailCont
     @Override
     public void setTitleImage(String url) {
         if (mTitleBgIv != null) {
-            Glide.with(this).load(url).asBitmap().into(mTitleBgIv);
+            Glide.with(this).asBitmap().load(url).into(mTitleBgIv);
         }
     }
 

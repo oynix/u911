@@ -2,8 +2,6 @@ package com.oy.u911.function.dribbble.adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,8 +14,10 @@ import com.oy.u911.util.DrawUtil;
 
 import java.util.List;
 
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -59,13 +59,13 @@ public class DribbbleAdapter extends RecyclerView.Adapter<DribbbleAdapter.MyHold
         holder.mLikes.setText(String.valueOf(item.getLikeCount()));
 
         String avatarUrl = item.getUserJson().getAvatarUrl();
-        Glide.with(mAty).load(avatarUrl).asBitmap().into(holder.mAvatar);
+        Glide.with(mAty).asBitmap().load(avatarUrl).into(holder.mAvatar);
         holder.mUsername.setText(item.getUserJson().getName());
 
         if (item.isAnimated()) {
-            Glide.with(mAty).load(item.getImages().getHidpi()).asGif().placeholder(R.drawable.ic_default_image).error(R.drawable.ic_error).into(holder.mImageView);
+            Glide.with(mAty).asGif().load(item.getImages().getHidpi()).placeholder(R.drawable.ic_default_image).error(R.drawable.ic_error).into(holder.mImageView);
         } else {
-            Glide.with(mAty).load(item.getImages().getHidpi()).asBitmap().placeholder(R.drawable.ic_default_image).error(R.drawable.ic_error).into(holder.mImageView);
+            Glide.with(mAty).asBitmap().load(item.getImages().getHidpi()).placeholder(R.drawable.ic_default_image).error(R.drawable.ic_error).into(holder.mImageView);
         }
     }
 
@@ -76,34 +76,34 @@ public class DribbbleAdapter extends RecyclerView.Adapter<DribbbleAdapter.MyHold
 
     class MyHolder extends RecyclerView.ViewHolder {
 
-        @InjectView(R.id.dribbble_card_view)
+        @BindView(R.id.dribbble_card_view)
         CardView mCardView;
 
-        @InjectView(R.id.dribbble_item_image)
+        @BindView(R.id.dribbble_item_image)
         ImageView mImageView;
 
-        @InjectView(R.id.dribbble_item_title)
+        @BindView(R.id.dribbble_item_title)
         TextView mTitle;
 
-        @InjectView(R.id.dribbble_item_avatar)
+        @BindView(R.id.dribbble_item_avatar)
         ImageView mAvatar;
 
-        @InjectView(R.id.dribbble_item_username)
+        @BindView(R.id.dribbble_item_username)
         TextView mUsername;
 
-        @InjectView(R.id.dribbble_item_views)
+        @BindView(R.id.dribbble_item_views)
         TextView mViews;
 
-        @InjectView(R.id.dribbble_item_comment)
+        @BindView(R.id.dribbble_item_comment)
         TextView mComments;
 
-        @InjectView(R.id.dribbble_item_like)
+        @BindView(R.id.dribbble_item_like)
         TextView mLikes;
 
         MyHolder(View itemView) {
             super(itemView);
 
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
 
             int width = Resources.getSystem().getDisplayMetrics().widthPixels - DrawUtil.dip2px(10);
             ViewGroup.LayoutParams params = mCardView.getLayoutParams();

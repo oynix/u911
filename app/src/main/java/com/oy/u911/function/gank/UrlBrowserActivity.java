@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -15,8 +13,10 @@ import android.widget.ProgressBar;
 import com.oy.u911.R;
 import com.oy.u911.base.BaseActivity;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -37,13 +37,13 @@ public class UrlBrowserActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    @InjectView(R.id.url_toolbar)
+    @BindView(R.id.url_toolbar)
     Toolbar mToolbar;
 
-    @InjectView(R.id.url_progressbar)
+    @BindView(R.id.url_progressbar)
     ProgressBar mProgressBar;
 
-    @InjectView(R.id.url_webview)
+    @BindView(R.id.url_webview)
     WebView mWebView;
 
     @Override
@@ -51,7 +51,7 @@ public class UrlBrowserActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser_url);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(mClickFinishListener);

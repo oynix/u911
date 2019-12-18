@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,8 +17,12 @@ import com.oy.u911.util.DataHub;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -45,10 +45,10 @@ public class BrowserImageActivity extends BaseActivity implements ViewPager.OnPa
         context.startActivity(intent);
     }
 
-    @InjectView(R.id.browser_image_viewpager)
+    @BindView(R.id.browser_image_viewpager)
     ViewPager mViewPager;
 
-    @InjectView(R.id.browser_image_toolbar)
+    @BindView(R.id.browser_image_toolbar)
     Toolbar mToolbar;
 
     private List<GankNewsBean> mDataList;
@@ -58,7 +58,7 @@ public class BrowserImageActivity extends BaseActivity implements ViewPager.OnPa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser_image);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mToolbar.setNavigationOnClickListener(mClickFinishListener);
 
@@ -109,7 +109,7 @@ public class BrowserImageActivity extends BaseActivity implements ViewPager.OnPa
             imageView.setLayoutParams(params);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             GankNewsBean item = mDataList.get(position);
-            Glide.with(BrowserImageActivity.this).load(item.getUrl()).asBitmap().into(imageView);
+            Glide.with(BrowserImageActivity.this).asBitmap().load(item.getUrl()).into(imageView);
             container.addView(imageView);
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override

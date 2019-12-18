@@ -1,7 +1,6 @@
 package com.oy.u911.view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
@@ -10,6 +9,8 @@ import com.oy.u911.util.DrawUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 

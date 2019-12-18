@@ -1,16 +1,16 @@
 package com.oy.u911.function.zhihu.presenter;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 
 import com.oy.u911.base.BaseRequestable;
-import com.oy.u911.function.zhihu.service.ZhihuURLService;
 import com.oy.u911.function.zhihu.model.DailyNewsJson;
 import com.oy.u911.function.zhihu.model.NewsDetailJson;
+import com.oy.u911.function.zhihu.service.ZhihuURLService;
 import com.oy.u911.util.Loger;
 
 import java.io.Serializable;
 
+import androidx.annotation.NonNull;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

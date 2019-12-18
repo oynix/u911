@@ -3,8 +3,6 @@ package com.oy.u911.function.zhihu.adapter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,9 +18,11 @@ import com.oy.u911.view.DotIndicator;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.Optional;
 
 /**
  * Author   : xiaoyu
@@ -84,7 +84,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
             final DailyNewsJson.Story story = mListData.get(position);
             List<String> storyImgUrls = story.getStoryImgUrls();
             if (storyImgUrls != null && storyImgUrls.size() > 0) {
-                Glide.with(mContext).load(storyImgUrls.get(0)).asBitmap().into(holder.itemIcon);
+                Glide.with(mContext).asBitmap().load(storyImgUrls.get(0)).into(holder.itemIcon);
             }
             holder.itemTitle.setText(story.getStoryTitle());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -103,21 +103,21 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
     class MyHolder extends RecyclerView.ViewHolder {
 
         // header
-        @Optional
-        @InjectView(R.id.header_view_pager)
+        @Nullable
+        @BindView(R.id.header_view_pager)
         ViewPager viewPager;
 
-        @Optional
-        @InjectView(R.id.header_dot_indicator)
+        @Nullable
+        @BindView(R.id.header_dot_indicator)
         DotIndicator indicator;
 
         // item
-        @Optional
-        @InjectView(R.id.item_icon)
+        @Nullable
+        @BindView(R.id.item_icon)
         ImageView itemIcon;
 
-        @Optional
-        @InjectView(R.id.item_name)
+        @Nullable
+        @BindView(R.id.item_name)
         TextView itemTitle;
 
         MyHandler handler;
@@ -126,7 +126,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.MyHo
 
         MyHolder(View itemView, int type) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
             holderType = type;
             // header
             if (type == 0) {

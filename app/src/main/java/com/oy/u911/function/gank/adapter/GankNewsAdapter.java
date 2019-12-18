@@ -1,8 +1,6 @@
 package com.oy.u911.function.gank.adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,9 +15,11 @@ import com.oy.u911.util.DataHub;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.Optional;
 
 /**
  * Author   : xiaoyu
@@ -68,7 +68,7 @@ public class GankNewsAdapter extends RecyclerView.Adapter<GankNewsAdapter.MyView
             final List<String> images = item.getImages();
             if (images != null && images.size() > 0) {
                 holder.image.setVisibility(View.VISIBLE);
-                Glide.with(mFragment).load(images.get(0)).asBitmap().into(holder.image);
+                Glide.with(mFragment).asBitmap().load(images.get(0)).into(holder.image);
             } else {
                 holder.image.setVisibility(View.GONE);
             }
@@ -79,7 +79,7 @@ public class GankNewsAdapter extends RecyclerView.Adapter<GankNewsAdapter.MyView
                 }
             });
         } else {
-            Glide.with(mFragment).load(item.getUrl()).asBitmap().into(holder.imageFuli);
+            Glide.with(mFragment).asBitmap().load(item.getUrl()).into(holder.imageFuli);
             holder.imageFuli.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -97,26 +97,26 @@ public class GankNewsAdapter extends RecyclerView.Adapter<GankNewsAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        @Optional
-        @InjectView(R.id.gank_item_title)
+        @Nullable
+        @BindView(R.id.gank_item_title)
         TextView title;
 
-        @Optional
-        @InjectView(R.id.gank_item_subtitle)
+        @Nullable
+        @BindView(R.id.gank_item_subtitle)
         TextView subtitle;
 
-        @Optional
-        @InjectView(R.id.gank_item_image)
+        @Nullable
+        @BindView(R.id.gank_item_image)
         ImageView image;
 
         // FULI fragment
-        @Optional
-        @InjectView(R.id.gank_item_image_fuli)
+        @Nullable
+        @BindView(R.id.gank_item_image_fuli)
         ImageView imageFuli;
 
         MyViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface DribbbleURLService {
 
-    String DRIBBBLE_BASE_URL = "https://api.dribbble.com/v1/";
+    String DRIBBBLE_BASE_URL = "https://api.dribbble.com/v2/";
     String ACCESS_TOKEN = "fc564af80a70b81dd492d151967e0451e74cdf43f22266ddcf54f8509b8fbd0f";
 
     /**

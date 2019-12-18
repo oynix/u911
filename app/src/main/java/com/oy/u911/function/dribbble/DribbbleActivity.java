@@ -1,10 +1,6 @@
 package com.oy.u911.function.dribbble;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -17,8 +13,12 @@ import com.oy.u911.function.dribbble.presenter.DribbblePresenter;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -30,13 +30,13 @@ public class DribbbleActivity extends BaseActivity implements DribbbleContract.V
 
     private DribbblePresenter mPresenter = new DribbblePresenter(this);
 
-    @InjectView(R.id.dribbble_toolbar)
+    @BindView(R.id.dribbble_toolbar)
     Toolbar mToolbar;
 
-    @InjectView(R.id.dribbble_loading_pb)
+    @BindView(R.id.dribbble_loading_pb)
     ProgressBar mProgressBar;
 
-    @InjectView(R.id.dribbble_recycler_view)
+    @BindView(R.id.dribbble_recycler_view)
     RecyclerView mRecyclerView;
 
     @Override
@@ -44,7 +44,7 @@ public class DribbbleActivity extends BaseActivity implements DribbbleContract.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dribbble);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(mClickFinishListener);

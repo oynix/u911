@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.oy.u911.function.zhihu.ZhihuIndexActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -20,7 +20,7 @@
         app:title="@string/zhihu_text"
         app:titleMarginStart="0dp"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/story_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,12 +1,6 @@
 package com.oy.u911.function.gank.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +16,14 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringDef;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Author   : xiaoyu
@@ -74,7 +74,7 @@ public class GankFragment extends BaseFragment implements GankContract.View {
 
     private String mFragmentType;
 
-    @InjectView(R.id.gank_recycler_view)
+    @BindView(R.id.gank_recycler_view)
     RecyclerView mRecyclerView;
 
     @Override
@@ -91,7 +91,7 @@ public class GankFragment extends BaseFragment implements GankContract.View {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
         if (mFragmentType.equals(GANK_FRAGMENT_TYPE_FULI)) {
             mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false));
             // 福利页面一次请求60条数据

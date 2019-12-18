@@ -1,6 +1,6 @@
 package com.oy.u911.function.zhihu.adapter;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Author   : xiaoyu
